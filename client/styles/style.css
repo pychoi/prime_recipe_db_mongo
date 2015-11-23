@@ -1,0 +1,107 @@
+/* ------ GENERAL STYLES ------ */
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    color: #444;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+.md-button{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    padding: 5px 20px;
+}
+
+.md-button:not([disabled]):hover {
+    background-color: transparent;
+}
+
+md-checkbox {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 2px 10px;
+}
+
+/* ------ HEADER ------*/
+
+.nav-button {
+    margin: 10px 10px;
+    font-size: 13px;
+    color: #444;
+}
+
+.md-button.md-icon-button {
+    line-height: 0;
+}
+
+.nav-button-menu {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-text {
+    margin-left: 20px;
+}
+
+/* ------ HOME PAGE ------*/
+
+
+/* ------ ENTER RECIPE PAGE ------ */
+.enter-recipe-container {
+    margin-top: 25px;
+}
+
+.enter-recipe-container h1 h2{
+    text-align: center;
+}
+
+.md-button.add-ingredient-button {
+    min-height: 0;
+    min-width: 0;
+    line-height: 0;
+    height: 30px;
+    padding: 0 8px;
+    font-size: 12px;
+}
+
+.md-button.delete-ingredient-button {
+    /*min-height: 0;*/
+    /*min-width: 0;*/
+    /*line-height: 0;*/
+    /*height: 30px;*/
+    font-weight: bold;
+    padding: 0 8px;
+    font-size: 12px;
+}
+
+/*.step-number {*/
+    /*margin-right: 30px;*/
+/*}*/
+
+.md-button.add-step-button {
+    min-height: 0;
+    min-width: 0;
+    line-height: 0;
+    padding: 15px 8px;
+    font-size: 12px;
+}
+
+.md-button.submit-recipe-button {
+    margin: 50px 0;
+}
+
+/* ------ SEARCH RECIPE PAGE ------ */
+.search-recipe-container {
+    margin-top: 20px;
+}
+
+.search-button {
+    margin-top: 20px;
+}

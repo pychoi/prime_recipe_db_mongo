@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/vendors/angular-material.min.css">
+    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/styles/style.css">
+
+</head>
+<body layout="column" layout-align="space-between">
+
+<md-toolbar>
+    <header ng-include="'/assets/views/templates/header.html'"></header>
+</md-toolbar>
+
+<md-content>
+    <main ng-view></main>
+</md-content>
+
+<md-toolbar class="md-hue-2" layout-align="center center"><i class="fa fa-github"></i></md-toolbar>
+
+
+    <!--SCRIPTS-->
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-messages.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular-material.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/app.min.js"></script>
+    <script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>
+</body>
+</html>

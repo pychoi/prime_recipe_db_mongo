@@ -1,0 +1,52 @@
+<md-content class="search-recipe-container" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+
+    <h1 class="md-display-1">Search Recipes</h1>
+
+    <form id="searchRecipeForm" name="searchRecipeForm" flex-gt-sm="50">
+        <md-input-container>
+            <label for="search">Search Recipes</label>
+            <input type="text" ng-model="search" id="search" name="search" >
+        </md-input-container>
+    </form>
+
+    <h2 class="md-display-headline">Additional Criteria:</h2>
+    <h3 class="md-display-title">Main Ingredient(s)</h3>
+    <div layout="row" layout-sm="column" layout-wrap>
+        <md-checkbox flex="16" class="md-primary">Beef</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Pork</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Chicken/Poultry</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Lamb/Goat</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Fish/Seafood</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Pasta/Noodle</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Tofu</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Vegetables</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Egg</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Rice/Congee</md-checkbox>
+    </div>
+    <h3 class="md-display-title">Cuisine</h3>
+    <div layout="row" layout-sm="column" layout-wrap>
+        <md-checkbox flex="16" class="md-primary">Chinese</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">American</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Italian</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Mexican</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Japanese</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Korean</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Indian</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Southeast Asian (Thai, Vietnamese, Singaporean, Malaysian)</md-checkbox>
+
+    </div>
+    <h3 class="md-display-title">Dish Type(s)</h3>
+    <div layout="row" layout-sm="column" layout-wrap>
+        <md-checkbox flex="16" class="md-primary">Bread</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Dessert</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Dim Sum</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Soup</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Chinese Festival</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Chinese BBQ</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Herbal Medicine</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Salad</md-checkbox>
+        <md-checkbox flex="16" class="md-primary">Sauces</md-checkbox>
+    </div>
+
+    <md-button class="md-raised md-primary search-button">Search!</md-button>
+</md-content>

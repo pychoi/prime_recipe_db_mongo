@@ -1,0 +1,106 @@
+<md-content class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-md="50" flex-offset-gt-md="25">
+    <h1 class="md-display-1">Enter Recipe</h1>
+
+
+    <form name="enterRecipeForm">
+        <md-input-container class="md-accent">
+            <label for="name">Recipe / Dish Name</label>
+            <input type="text" ng-model="recipe.name" required id="name" name="name">
+
+            <div ng-messages="enterRecipeForm.name.$error" ng-if="enterRecipeForm.name.$touched">
+                <div ng-message="required">Recipe / Dish Name is Required!</div>
+            </div>
+
+        </md-input-container>
+
+        <md-input-container class="md-accent">
+            <label for="source">Recipe Source</label>
+            <input type="text" ng-model="recipe.source" id="source" name="source">
+        </md-input-container>
+    </form>
+
+    <h2 class="md-display-headline">Enter Ingredients</h2>
+
+    <div layout="row" layout-align="space-around center">
+        <form layout="row" layout-sm="column" id="enterIngredients" name="enterIngredients">
+            <md-input-container class="md-accent">
+                <label for="ingredientName">Ingredient Name</label>
+                <input type="text" ng-model="ingredient.name" id="ingredientName" name="ingredientName" >
+            </md-input-container>
+
+            <md-input-container class="md-accent">
+                <label for="ingredientAmount">Quantity (e.g. 2 Cups)</label>
+                <input type="text" ng-model="ingredient.amount" id="ingredientAmount" name="ingredientAmount">
+            </md-input-container>
+        </form>
+        <md-button class="md-raised add-ingredient-button" ng-click="addNewIngredient()">Add Ingredient</md-button>
+    </div>
+
+
+        <div>
+            <div layout="row" layout-sm="column" layout-align-sm="center center" ng-repeat="foo in ingredients">
+                <p flex-offset-gt-sm="5" flex="30">{{foo.name}}</p>
+                <p flex="30">{{foo.amount}}</p>
+                <md-button flex="33" class="md-warn delete-ingredient-button" ng-click="deleteIngredient(foo)">Delete Ingredient</md-button>
+            </div>
+        </div>
+
+<!--ENTER INSTRUCTIONS SECTION-->
+
+    <h2 class="md-display-headline">Enter Instructions</h2>
+
+    <div layout="row" layout-sm="column" layout-align-gt-sm="start center" ng-repeat="step in steps">
+        <div flex-gt-sm="15" class="step-number">{{step.step}}</div>
+        <form flex-gt-sm="80" id="enterInstructions" name="enterInstructions">
+            <md-input-container class="md-accent">
+                <label>{{step.step}} Instructions</label>
+                <textarea ng-model="step.instruction"></textarea>
+            </md-input-container>
+        </form>
+    </div>
+
+    <md-button class="md-raised add-step-button" ng-click="addNewStep()">Add Step</md-button>
+
+    <h2 class="md-display-headline">Select Categories</h2>
+        <h3 class="md-display-title">Main Ingredient(s)</h3>
+            <div layout="row" layout-sm="column" layout-wrap>
+                <md-checkbox flex="16" class="md-accent" ng-model="categories">Beef</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Pork</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Chicken/Poultry</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Lamb/Goat</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Fish/Seafood</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Pasta/Noodle</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Tofu</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Vegetables</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Egg</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Rice/Congee</md-checkbox>
+            </div>
+        <h3 class="md-display-title">Cuisine</h3>
+            <div layout="row" layout-sm="column" layout-wrap>
+                <md-checkbox flex="16" class="md-accent md-hue-3">Chinese</md-checkbox>
+                <md-checkbox flex="16" class="md-accent md-hue-3">American</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Italian</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Mexican</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Japanese</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Korean</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Indian</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Southeast Asian (Thai, Vietnamese, Singaporean, Malaysian)</md-checkbox>
+
+            </div>
+        <h3 class="md-display-title">Dish Type(s)</h3>
+            <div layout="row" layout-sm="column" layout-wrap>
+                <md-checkbox flex="16" class="md-accent">Bread</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Dessert</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Dim Sum</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Soup</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Chinese Festival</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Chinese BBQ</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Herbal Medicine</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Salad</md-checkbox>
+                <md-checkbox flex="16" class="md-accent">Sauces</md-checkbox>
+            </div>
+
+
+        <md-button class="md-raised md-accent md-hue-3 submit-recipe-button" ng-click="submitRecipe()">Submit Recipe</md-button>
+
+</md-content>
