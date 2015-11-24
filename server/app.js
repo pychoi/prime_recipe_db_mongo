@@ -6,8 +6,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var submit = require('./routes/submit');
-//var search = require('./routes/search');
-
+var search = require('./routes/search');
+var random = require('./routes/random');
 
 app.set('port', process.env.PORT || 5000);
 
@@ -15,7 +15,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({expanded: true}));
 
 app.use('/submit', submit);
-//app.use('/search', search);
+app.use('/search', search);
+app.use('/random', random);
 app.use('/', index);
 
 app.listen(app.get("port"), function(){

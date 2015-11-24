@@ -6,7 +6,6 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
     $scope.searchMode = true;
     $scope.resultArray = [];
 
-
     $scope.main = ['Beef', 'Pork', 'Chicken/Poultry', 'Lamb/Goat', 'Seafood', 'Pasta/Noodle', 'Tofu', 'Vegetables', 'Egg', 'Rice/Congee'];
     $scope.cuisine =['Chinese', 'American', 'Italian', 'Mexican', 'Japanese', 'Korean', 'Indian', 'Southeast Asian (Thai, Vietnamese, Singaporean, Malaysian)'];
     $scope.type = ['Bread', 'Dessert', 'Dim Sum', 'Soup', 'Chinese Festival', 'BBQ', 'Herbal Medicine', 'Salad', 'Sauces'];
@@ -21,7 +20,7 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
 
     $scope.searchKeyword = function(keyword){
         //console.log($scope.search.keyword);
-        $http.get('/submit/keyword', {params:{keyword: keyword}}).then(function(response){
+        $http.get('/search/keyword', {params:{keyword: keyword}}).then(function(response){
             console.log(response.data);
 
             $scope.resultArray = response.data;
@@ -31,7 +30,7 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
     };
 
     $scope.searchCategories = function(){
-        $http.get('/submit/categories', {params:{categories: $scope.search.categories}}).then(function(response){
+        $http.get('/search/categories', {params:{categories: $scope.search.categories}}).then(function(response){
             console.log(response.data);
 
             $scope.resultArray = response.data;

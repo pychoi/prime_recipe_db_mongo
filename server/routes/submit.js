@@ -1,15 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var path = require('path');
-
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+
+var recipeSchema = require('../modules/schema');
 
 mongoose.connect('mongodb://localhost/recipe_db');
-mongoose.model("Recipe", new Schema({"name": String, "source": String, "ingredients": Array, "instructions": Array, "categories": Array}, {collection: "recipe"}));
-var Recipe = mongoose.model('Recipe');
+var Recipe = mongoose.model('Recipe', recipeSchema);
 
-router.post('/data', function(req,res){
+router.post('/', function(req,res){
    var addedRecipe = new Recipe({
        "name": req.body.name,
        "source": req.body.source,
@@ -22,26 +20,6 @@ router.post('/data', function(req,res){
         if(err) console.log(err);
         res.send(data);
     });
-});
-
-router.get('/keyword', function(req, res){
-
-    //console.log(req.query.keyword);
-
-    Recipe.find({$text: {$search: req.query.keyword}}, function(err, data){
-        if(err) console.log(err);
-        res.send(data);
-    })
-});
-
-router.get('/categories', function(req, res){
-
-    //console.log(req.query.categories);
-
-    Recipe.find({categories: req.query.categories}, function(err, data){
-        if(err) console.log(err);
-        res.send(data);
-    })
 });
 
 module.exports = router;

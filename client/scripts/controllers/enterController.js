@@ -75,9 +75,9 @@ myApp.controller('EnterController', ['$scope', '$http', function($scope, $http){
 
     $scope.submitRecipe = function(){
 
-        $http.post('/submit/data', $scope.recipe).then(function(response){
+        $http.post('/submit/', $scope.recipe).then(function(response){
             $scope.newRecipe = response.data;
-            $scope.successMessage = "Recipe is entered!"
+            $scope.successMessage = "Recipe is entered!";
             $scope.searchMode = false;
 
         });
