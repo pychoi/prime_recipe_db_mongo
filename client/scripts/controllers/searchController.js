@@ -1,4 +1,8 @@
-myApp.controller('SearchController', ['$scope', '$http', function($scope, $http){
+myApp.controller('SearchController', ['$scope', '$http', 'DataService', function($scope, $http, DataService){
+
+    console.log("search controller is here!");
+
+    $scope.dataService = DataService;
 
     $scope.search = {};
     $scope.search.categories = [];
@@ -6,9 +10,9 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
     $scope.searchMode = true;
     $scope.resultArray = [];
 
-    $scope.main = ['Beef', 'Pork', 'Chicken/Poultry', 'Lamb/Goat', 'Seafood', 'Pasta/Noodle', 'Tofu', 'Vegetables', 'Egg', 'Rice/Congee'];
-    $scope.cuisine =['Chinese', 'American', 'Italian', 'Mexican', 'Japanese', 'Korean', 'Indian', 'Southeast Asian (Thai, Vietnamese, Singaporean, Malaysian)'];
-    $scope.type = ['Bread', 'Dessert', 'Dim Sum', 'Soup', 'Chinese Festival', 'BBQ', 'Herbal Medicine', 'Salad', 'Sauces'];
+    $scope.main = $scope.dataService.mainArray();
+    $scope.cuisine = $scope.dataService.cuisineArray();
+    $scope.type = $scope.dataService.dishTypeArray();
 
     $scope.toggleChecked = function(category){
         if ($scope.search.categories.indexOf(category) === -1){
@@ -19,7 +23,6 @@ myApp.controller('SearchController', ['$scope', '$http', function($scope, $http)
     };
 
     $scope.searchKeyword = function(keyword){
-        //console.log($scope.search.keyword);
         $http.get('/search/keyword', {params:{keyword: keyword}}).then(function(response){
             console.log(response.data);
 

@@ -1,5 +1,7 @@
-myApp.controller('EnterController', ['$scope', '$http', function($scope, $http){
-    console.log("EnterController is working!");
+myApp.controller('EnterController', ["$scope", "$http", "DataService", function($scope, $http, DataService){
+    //console.log("EnterController is working!");
+
+    $scope.dataService = DataService;
 
     $scope.recipe = {};
     $scope.recipe.ingredients = [];
@@ -15,9 +17,10 @@ myApp.controller('EnterController', ['$scope', '$http', function($scope, $http){
     //$scope.steps = [{step: 1}];
     //$scope.steps = [];
 
-    $scope.main = ['Beef', 'Pork', 'Chicken/Poultry', 'Lamb/Goat', 'Seafood', 'Pasta/Noodle', 'Tofu', 'Vegetables', 'Egg', 'Rice/Congee'];
-    $scope.cuisine =['Chinese', 'American', 'Italian', 'Mexican', 'Japanese', 'Korean', 'Indian', 'Southeast Asian (Thai, Vietnamese, Singaporean, Malaysian)'];
-    $scope.type = ['Bread', 'Dessert', 'Dim Sum', 'Soup', 'Chinese Festival', 'BBQ', 'Herbal Medicine', 'Salad', 'Sauces'];
+    $scope.main = $scope.dataService.mainArray();
+    $scope.cuisine = $scope.dataService.cuisineArray();
+    $scope.type = $scope.dataService.dishTypeArray();
+
 
     $scope.addIngredient = function(){
         $scope.recipe.ingredients.push($scope.ingredient);

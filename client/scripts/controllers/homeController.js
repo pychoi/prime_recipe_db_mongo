@@ -5,7 +5,6 @@ myApp.controller('HomeController', ['$scope','$http', function($scope, $http){
 
     $scope.randomRecipe = function(){
         $http.get('/random/').then(function(response){
-           console.log(response.data);
             $scope.randomResult = response.data;
         });
     };
