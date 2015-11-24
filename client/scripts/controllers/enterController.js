@@ -1,84 +1,86 @@
 myApp.controller('EnterController', ['$scope', '$http', function($scope, $http){
     console.log("EnterController is working!");
 
-    $scope.recipeInfo = {};
+    $scope.recipe = {};
+    $scope.recipe.ingredients = [];
+    $scope.recipe.instructions = [{step: 1}];
+    $scope.recipe.categories = [];
     $scope.ingredient = {};
-    $scope.ingredients = [];
-    $scope.categories = [];
     $scope.disable = false;
+    $scope.checkIngredient = true;
+    $scope.newRecipe = {};
+    $scope.searchMode = true;
 
     // $scope.steps array contains all step numbers and corresponding instructions as objects
-    $scope.steps = [{step: 'Step 1'}];
+    //$scope.steps = [{step: 1}];
+    //$scope.steps = [];
 
     $scope.main = ['Beef', 'Pork', 'Chicken/Poultry', 'Lamb/Goat', 'Seafood', 'Pasta/Noodle', 'Tofu', 'Vegetables', 'Egg', 'Rice/Congee'];
     $scope.cuisine =['Chinese', 'American', 'Italian', 'Mexican', 'Japanese', 'Korean', 'Indian', 'Southeast Asian (Thai, Vietnamese, Singaporean, Malaysian)'];
     $scope.type = ['Bread', 'Dessert', 'Dim Sum', 'Soup', 'Chinese Festival', 'BBQ', 'Herbal Medicine', 'Salad', 'Sauces'];
 
-
-    $scope.addName = function(recipeInfo){
-        //$scope.accordion = 2;
-        $http.post('/submit/recipeInfo', $scope.recipeInfo).then(function(){
-            console.log("Recipe Info saved");
-            $scope.disable = true;
-        });
-    };
-
-    $scope.deleteName = function(){
-        $scope.disable = false;
-        $scope.recipeInfo = {};
-        $http.delete('/submit/recipeInfo').then(function(){
-            console.log('deleted recipe info!');
-        });
-    };
-
-
-    $scope.addNewIngredient = function(){
-        $scope.ingredients.push($scope.ingredient);
-
-        $http.post('/submit/ingredient', $scope.ingredient).then(function(response){
-            console.log(response);
-            console.log("Ingredient saved");
-        });
-
+    $scope.addIngredient = function(){
+        $scope.recipe.ingredients.push($scope.ingredient);
+        $scope.checkIngredient = false;
         $scope.ingredient = {};
+        $scope.enterIngredients.$setUntouched();
     };
 
     $scope.deleteIngredient = function(foo){
-        for(var i = 0; i < $scope.ingredients.length; i++){
-            if(foo.name == $scope.ingredients[i].name && foo.amount == $scope.ingredients[i].amount){
-                $scope.ingredients.splice(i,1);
+        for(var i = 0; i < $scope.recipe.ingredients.length; i++){
+            if(foo.name == $scope.recipe.ingredients[i].name && foo.amount == $scope.recipe.ingredients[i].amount){
+                $scope.recipe.ingredients.splice(i,1);
             }
         }
-
-        $http.delete('/submit/ingredient').then(function(){
-            console.log('deleted ingredient!');
-        });
-
+            if($scope.recipe.ingredients.length < 1){
+                $scope.checkIngredient = true;
+            }
     };
 
     $scope.addNewStep = function(){
-        var newItemNum = $scope.steps.length + 1;
-        $scope.steps.push({step: 'Step '+ newItemNum});
-        //console.log($scope.steps);
+        var newItemNum = $scope.recipe.instructions.length + 1;
+        $scope.recipe.instructions.push({step: newItemNum});
     };
 
-    //remove step function...
+    $scope.removeStep = function(foo){
+        for(var i = 0; i < $scope.recipe.instructions.length; i++){
+            if(foo.step == $scope.recipe.instructions[i].step){
+                $scope.recipe.instructions.splice(i,1);
+            }
+        }
+
+        for(var i = 0; i < $scope.recipe.instructions.length; i++){
+            $scope.recipe.instructions[i].step = i+1;
+        }
+    };
+
+    $scope.checkInstruction = function(steps){
+
+        for(var i = 0; i < steps.length; i++) {
+
+            if (steps[i].instruction) {
+                $scope.noStepErrorMessage = false;
+                $scope.accordion = 4;
+            }
+        }
+    };
 
     $scope.toggleChecked = function(foo){
-        if ($scope.categories.indexOf(foo) === -1){
-            $scope.categories.push(foo);
+        if ($scope.recipe.categories.indexOf(foo) === -1){
+            $scope.recipe.categories.push(foo);
         } else {
-            $scope.categories.splice($scope.categories.indexOf(foo), 1);
+            $scope.recipe.categories.splice($scope.recipe.categories.indexOf(foo), 1);
         }
     };
 
     $scope.submitRecipe = function(){
-        $http.post('/submit/categories', $scope.categories).then(function(){
-            console.log("success");
+
+        $http.post('/submit/data', $scope.recipe).then(function(response){
+            $scope.newRecipe = response.data;
+            $scope.successMessage = "Recipe is entered!"
+            $scope.searchMode = false;
+
         });
-
-        //check if there's at least on ingredient and amount, and at least one step
-
     };
 
 }]);

@@ -1,9 +1,9 @@
-<md-content class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content ng-show="searchMode" class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-md="50" flex-offset-gt-md="25">
     <h1 class="md-display-1">Enter Recipe</h1>
 
 <div ng-init="accordion=1">
 
-<!--ENTER NAME-->
+<!-- ENTER NAME SECTION -->
     <h2 class="accordion" ng-class="{active:accordion==1}">
         <a href ng-click="accordion = 1">Enter Recipe Name and Source</a>
     </h2>
@@ -11,7 +11,7 @@
         <form name="enterRecipeForm">
             <md-input-container class="md-accent">
                 <label for="name">Recipe / Dish Name</label>
-                <input type="text" ng-model="recipeInfo.name" required ng-disabled="disable" id="name" name="name">
+                <input type="text" ng-model="recipe.name" required ng-disabled="disable" id="name" name="name">
 
                 <div ng-messages="enterRecipeForm.name.$error" ng-if="enterRecipeForm.name.$touched">
                     <div ng-message="required">Recipe / Dish Name is Required!</div>
@@ -21,45 +21,54 @@
 
             <md-input-container class="md-accent">
                 <label for="source">Recipe Source</label>
-                <input type="text" ng-model="recipeInfo.source" ng-disabled="disable" id="source" name="source">
+                <input type="text" ng-model="recipe.source" ng-disabled="disable" id="source" name="source">
             </md-input-container>
         </form>
-        <md-button class="md-raised md-accent md-hue-3" ng-disabled="enterRecipeForm.$invalid || disable" ng-click="addName(recipeInfo)">Save Name and Source</md-button>
-        <md-button class="md-raised md-warn" ng-show="disable" ng-click="deleteName()">Reset</md-button>
-        <!--turn disable to false, delete entry from database-->
+        <md-button class="md-raised md-accent md-hue-3" ng-disabled="enterRecipeForm.$invalid" ng-click="accordion=2">Next</md-button>
     </div>
 
-<!--INGREDIENTS  -->
+<!-- ENTER INGREDIENTS SECTION -->
     <h2 class="accordion" ng-class="{active:accordion==2}">
         <a href ng-click="accordion = 2">Enter Ingredients</a>
     </h2>
 
     <div ng-show="accordion==2">
-        <!--<h2 class="md-display-headline">Enter Ingredients</h2>-->
 
         <div layout="row" layout-align="space-around center">
             <form layout="row" layout-sm="column" id="enterIngredients" name="enterIngredients">
                 <md-input-container class="md-accent">
                     <label for="ingredientName">Ingredient Name</label>
-                    <input type="text" ng-model="ingredient.name" id="ingredientName" name="ingredientName" >
+                    <input type="text" ng-model="ingredient.name" required id="ingredientName" name="ingredientName">
+
+                    <div ng-messages="enterIngredients.ingredientName.$error" ng-if="enterIngredients.ingredientName.$touched">
+                        <div ng-message="required">Required</div>
+                    </div>
+
                 </md-input-container>
 
                 <md-input-container class="md-accent">
                     <label for="ingredientAmount">Quantity (e.g. 2 Cups)</label>
-                    <input type="text" ng-model="ingredient.amount" id="ingredientAmount" name="ingredientAmount">
+                    <input type="text" ng-model="ingredient.amount" required id="ingredientAmount" name="ingredientAmount">
+
+                    <div ng-messages="enterIngredients.ingredientAmount.$error" ng-if="enterIngredients.ingredientAmount.$touched">
+                        <div ng-message="required">Required</div>
+                    </div>
+
                 </md-input-container>
             </form>
-            <md-button class="md-raised add-ingredient-button" ng-click="addNewIngredient()">Add Ingredient</md-button>
+            <md-button class="md-raised add-ingredient-button" ng-click="addIngredient()" ng-disabled="enterIngredients.$invalid">Add Ingredient</md-button>
         </div>
 
 
         <div>
-            <div layout="row" layout-sm="column" layout-align-sm="center center" ng-repeat="foo in ingredients">
+            <div layout="row" layout-sm="column" layout-align-sm="center center" ng-repeat="foo in recipe.ingredients">
                 <p flex-offset-gt-sm="5" flex="30">{{foo.name}}</p>
                 <p flex="30">{{foo.amount}}</p>
                 <md-button flex="33" class="md-warn delete-ingredient-button" ng-click="deleteIngredient(foo)">Delete Ingredient</md-button>
             </div>
         </div>
+
+        <md-button class="md-raised md-accent md-hue-3" ng-disabled="checkIngredient" ng-click="accordion = 3">Next</md-button>
     </div>
 
 <!--ENTER INSTRUCTIONS SECTION-->
@@ -68,47 +77,61 @@
     </h2>
 
     <div ng-show="accordion==3">
-        <!--<h2 class="md-display-headline">Enter Instructions</h2>-->
 
-        <div layout="row" layout-sm="column" layout-align-gt-sm="space-between center" ng-repeat="step in steps">
-            <div class="step-number">{{step.step}}</div>
-            <form flex-gt-sm="60" id="enterInstructions" name="enterInstructions">
+        <div layout="row" layout-sm="column" layout-align-gt-sm="space-between center" ng-repeat="step in recipe.instructions">
+            <div class="step-number">Step {{step.step}}</div>
+
+            <form name="enterInstructions" flex-gt-sm="60">
                 <md-input-container class="md-accent">
-                    <label>{{step.step}} Instructions</label>
-                    <textarea ng-model="step.instruction"></textarea>
+                    <label for="instruction">Step {{step.step}} Instructions</label>
+                    <textarea ng-model="step.instruction" required id="instruction" name="instruction"></textarea>
+
+                    <div ng-messages="enterInstructions.instruction.$error">
+                        <div ng-message="required">Instruction is Required!</div>
+                    </div>
+
                 </md-input-container>
+
             </form>
-            <md-button class="md-raised add-step-button">Save Step</md-button>
-            <md-button class="md-raised md-warn add-step-button">Remove</md-button>
+            <md-button class="md-warn delete-ingredient-button" ng-click="removeStep(step)">Remove</md-button>
+
         </div>
 
-        <md-button class="md-raised add-step-button" ng-click="addNewStep()">Add Step</md-button>
+        <md-button class="md-raised add-step-button" ng-click="addNewStep()">Add Step</md-button><br/>
+        <md-button class="md-raised md-accent md-hue-3" ng-disabled="enterInstructions.$invalid" ng-click="accordion=4">Next</md-button>
     </div>
 
 
-<!--CATEGORES-->
+<!-- SELECT CATEGORIES SECTION-->
     <h2 class="accordion" ng-class="{active:accordion==4}">
         <a href ng-click="accordion = 4">Select Categories</a>
     </h2>
 
     <div ng-show="accordion==4">
-        <!--<h2 class="md-display-headline">Select Categories</h2>-->
             <h3 class="md-display-title">Main Ingredient(s)</h3>
                 <div layout="row" layout-sm="column" layout-wrap>
-                    <md-checkbox flex="16" class="md-accent md-hue-3" ng-repeat="foo in main" ng-click="toggleChecked(foo)">{{foo}}</md-checkbox>
+                    <md-checkbox flex="16" class="md-accent md-hue-3" ng-model="kittyfoofoo" ng-repeat="foo in main" ng-click="toggleChecked(foo)">{{foo}}</md-checkbox>
                 </div>
             <h3 class="md-display-title">Cuisine</h3>
                 <div layout="row" layout-sm="column" layout-wrap>
-                    <md-checkbox flex="16" class="md-accent md-hue-3" ng-repeat="foo in cuisine" ng-click="toggleChecked(foo)">{{foo}}</md-checkbox>
+                    <md-checkbox flex="16" class="md-accent md-hue-3" ng-model="kittyfoofoo" ng-repeat="foo in cuisine" ng-click="toggleChecked(foo)">{{foo}}</md-checkbox>
                 </div>
             <h3 class="md-display-title">Dish Type(s)</h3>
                 <div layout="row" layout-sm="column" layout-wrap>
-                    <md-checkbox flex="16" class="md-accent md-hue-3" ng-repeat="foo in type" ng-click="toggleChecked(foo)">{{foo}}</md-checkbox>
+                    <md-checkbox flex="16" class="md-accent md-hue-3" ng-model="kittyfoofoo" ng-repeat="foo in type" ng-click="toggleChecked(foo)">{{foo}}</md-checkbox>
                 </div>
-
-        <p>{{categories}}</p>
     </div>
 </div>
-        <md-button class="md-raised md-accent md-hue-3 submit-recipe-button" ng-disabled="enterRecipeForm.$invalid" ng-click="submitRecipe()">Submit Recipe</md-button>
+        <md-button class="md-raised md-accent md-hue-3 submit-recipe-button" ng-disabled="enterRecipeForm.$invalid || checkIngredient || noStepErrorMessage" ng-click="submitRecipe()">Submit Recipe</md-button>
 
+</md-content>
+
+<md-content ng-hide="searchMode" class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-md="50" flex-offset-gt-md="25">
+    <div>
+        <p>{{successMessage}}</p>
+        <h1>{{newRecipe.name}}</h1>
+        <h2>{{newRecipe.source}}</h2>
+        <div ng-repeat="foo in newRecipe.ingredients">{{foo.name}}: {{foo.amount}}</div>
+        <div ng-repeat="foo in newRecipe.instructions">{{foo.step}}: {{foo.instruction}}</div>
+    </div>
 </md-content>

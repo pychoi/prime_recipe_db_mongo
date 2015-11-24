@@ -1,65 +1,47 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/graces_kitchen';
 
-router.post("/recipeInfo", function(req, res, next){
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-    console.log(req.body);
+mongoose.connect('mongodb://localhost/recipe_db');
+mongoose.model("Recipe", new Schema({"name": String, "source": String, "ingredients": Array, "instructions": Array, "categories": Array}, {collection: "recipe"}));
+var Recipe = mongoose.model('Recipe');
 
-    var recipeInfo = {
-        "name": req.body.name,
-        "source":req.body.source
-    };
+router.post('/data', function(req,res){
+   var addedRecipe = new Recipe({
+       "name": req.body.name,
+       "source": req.body.source,
+       "ingredients": req.body.ingredients,
+       "instructions": req.body.instructions,
+       "categories": req.body.categories
+   });
 
-    pg.connect(connectionString, function(err, client){
-        client.query("INSERT INTO recipes (recipe_name, recipe_source) VALUES ($1, $2)",
-            [recipeInfo.name, recipeInfo.source],
-            function (err, result) {
-                if (err) {
-                    console.log("Error inserting data: ", err);
-                    res.send(false);
-                }
-                res.send(true);
-            });
+    addedRecipe.save(function(err,data){
+        if(err) console.log(err);
+        res.send(data);
     });
 });
 
-router.delete('/recipeInfo', function(req,res,next){
-    pg.connect(connectionString, function(err, client){
-        client.query("DELETE FROM recipes WHERE id = (SELECT id FROM recipes ORDER BY id DESC LIMIT 1)",
-            function (err, result) {
-                if (err) {
-                    console.log("Error inserting data: ", err);
-                    res.send(false);
-                }
-                res.send(true);
-            });
-    });
+router.get('/keyword', function(req, res){
+
+    //console.log(req.query.keyword);
+
+    Recipe.find({$text: {$search: req.query.keyword}}, function(err, data){
+        if(err) console.log(err);
+        res.send(data);
+    })
 });
 
-router.post("/ingredient", function(req, res, next){
+router.get('/categories', function(req, res){
 
-    console.log(req.body);
+    //console.log(req.query.categories);
 
-    var ingredient = {
-        "name": req.body.name,
-        "amount":req.body.amount
-    };
-
-    pg.connect(connectionString, function(err, client){
-        client.query("INSERT INTO ingredients (ingredient_name, ingredient_amount, recipe_id) VALUES ($1, $2, (SELECT id FROM recipes ORDER BY id DESC LIMIT 1))",
-            [ingredient.name, ingredient.amount],
-            function (err, result) {
-                if (err) {
-                    console.log("Error inserting data: ", err);
-                    res.send(false);
-                }
-                res.send(true);
-            });
-    });
+    Recipe.find({categories: req.query.categories}, function(err, data){
+        if(err) console.log(err);
+        res.send(data);
+    })
 });
-
 
 module.exports = router;
