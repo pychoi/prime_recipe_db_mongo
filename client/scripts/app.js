@@ -3,27 +3,27 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $mdThemingProvider){
     $routeProvider.
         when('/home', {
-            templateUrl: 'assets/views/routes/home.html',
+            templateUrl: './routes/home.html',
             controller: 'HomeController'
         }).
         when('/search', {
-            templateUrl: 'assets/views/routes/search.html',
+            templateUrl: './routes/search.html',
             controller: 'SearchController'
         }).
         when('/enter', {
-            templateUrl: 'assets/views/routes/enter.html',
+            templateUrl: './routes/enter.html',
             controller: 'EnterController'
         }).
         when('/meal', {
-            templateUrl: 'assets/views/routes/meal.html',
+            templateUrl: './routes/meal.html',
             controller: 'SearchController'
         }).
         when('/list', {
-            templateUrl: 'assets/views/routes/list.html',
+            templateUrl: './routes/list.html',
             controller: 'ListController'
         }).
         when('/recipe', {
-            templateUrl: 'assets/views/routes/recipe.html',
+            templateUrl: './routes/recipe.html',
             controller: 'RecipeController'
         }).
         otherwise({

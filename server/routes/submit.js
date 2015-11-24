@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 
 var recipeSchema = require('../modules/schema');
 
-mongoose.connect('mongodb://localhost/recipe_db');
+//mongoose.connect('mongodb://localhost/recipe_db');
 var Recipe = mongoose.model('Recipe', recipeSchema);
 
 router.post('/', function(req,res){

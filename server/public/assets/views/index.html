@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -11,17 +11,29 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
 
 </head>
-<body layout="column" layout-align="space-between">
+<body>
 
-<md-toolbar>
-    <header ng-include="'/assets/views/templates/header.html'"></header>
-</md-toolbar>
-
-<md-content>
-    <main ng-view></main>
-</md-content>
-
-<md-toolbar class="md-hue-2" layout-align="center center"><i class="fa fa-github"></i></md-toolbar>
+    <div class="instructions">
+        <div class="container">
+            <h1 class="lead">Passport Login</h1>
+        </div>
+    </div>
+    <div class="container">
+        <form action="/" method="post">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username"/>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password"/>
+            </div>
+            <div>
+                <input type="submit" value="Log In"/>
+                <a href="/register">Register</a>
+            </div>
+        </form>
+    </div>
 
 
     <!--SCRIPTS-->

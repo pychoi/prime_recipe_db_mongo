@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Welcome!</title>
 
     <!--STYLES-->
     <link rel="stylesheet" href="/vendors/angular-material.min.css">
@@ -11,30 +11,17 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
 
 </head>
-<body>
+<body layout="column" layout-align="space-between">
 
-    <div class="instructions">
-        <div class="container">
-            <h1 class="lead">Passport Login</h1>
-        </div>
-    </div>
-    <div class="container">
-        <form action="/" method="post">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username"/>
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password"/>
-            </div>
-            <div>
-                <input type="submit" value="Log In"/>
-                <a href="/register">Register</a>
-            </div>
-        </form>
-    </div>
+    <md-toolbar>
+        <header ng-include="'/assets/views/templates/header.html'"></header>
+    </md-toolbar>
 
+    <md-content>
+        <main ng-view></main>
+    </md-content>
+
+    <md-toolbar class="md-hue-2" layout-align="center center"><i class="fa fa-github"></i></md-toolbar>
 
     <!--SCRIPTS-->
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
@@ -47,5 +34,6 @@
     <script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>
     <script type="text/javascript" src="/assets/scripts/factories/data.min.js"></script>
     <script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>
+
 </body>
 </html>
