@@ -5,7 +5,9 @@ var SALT_WORK_FACTORY = 10;  //how much to screw it up // convention is 10 // hi
 
 var UserSchema = new Schema({
     username: {type: String, required: true, index:{unique: true}},
-    password: {type: String, required: true}},
+    password: {type: String, required: true},
+    mealSaved: {type: Array},
+    groceriesList: {type: Array}},
     {collection: "users"});
 
 UserSchema.pre('save', function(next){  //move to next thing in the middleware land

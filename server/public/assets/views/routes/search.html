@@ -41,11 +41,13 @@
     </div>
 </md-content>
 
-<md-content ng-hide="searchMode" class="search-recipe-container" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
-    <div>
-        <ol>
-            <li ng-repeat="result in resultArray">{{result.name}}</li>
-        </ol>
+<md-content ng-hide="searchMode" class="search-recipe-container md-whiteframe-2dp" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+    <h1>Recipe</h1>
+    <div ng-repeat="result in resultArray">
+        <recipe info="result"></recipe>
+        <!--<ol>-->
+            <!--<li ng-repeat="result in resultArray">{{result.name}}</li>-->
+        <!--</ol>-->
     </div>
 
     <!--result.name as links-->

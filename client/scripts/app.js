@@ -16,15 +16,15 @@ myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $
         }).
         when('/meal', {
             templateUrl: './routes/meal.html',
-            controller: 'SearchController'
+            controller: 'MealController'
         }).
         when('/list', {
             templateUrl: './routes/list.html',
             controller: 'ListController'
         }).
-        when('/recipe', {
-            templateUrl: './routes/recipe.html',
-            controller: 'RecipeController'
+        when('/result', {
+            templateUrl: './routes/result.html',
+            controller: 'ResultController'
         }).
         otherwise({
             redirectTo: 'home'

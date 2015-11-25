@@ -1,4 +1,4 @@
-myApp.controller('SearchController', ['$scope', '$http', 'DataService', function($scope, $http, DataService){
+myApp.controller('SearchController', ['$scope', '$http', 'DataService', '$location', function($scope, $http, DataService, $location){
 
     console.log("search controller is here!");
 
@@ -23,23 +23,18 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataService', function
     };
 
     $scope.searchKeyword = function(keyword){
-        $http.get('/search/keyword', {params:{keyword: keyword}}).then(function(response){
-            console.log(response.data);
-
-            $scope.resultArray = response.data;
-
-            $scope.searchMode = false;
-        });
+        $location.path('/result').search({query: keyword});
     };
 
     $scope.searchCategories = function(){
-        $http.get('/search/categories', {params:{categories: $scope.search.categories}}).then(function(response){
-            console.log(response.data);
 
-            $scope.resultArray = response.data;
+        $location.path('/result').search({query: {categories: $scope.search.categories}});
 
-            $scope.searchMode = false;
-        });
-    }
+        //$http.get('/search/categories', {params:{categories: $scope.search.categories}}).then(function(response){
+        //    console.log(response.data);
+        //    $scope.resultArray = response.data;
+        //    //$window.location.href='#result';
+        //});
+    };
 
 }]);
