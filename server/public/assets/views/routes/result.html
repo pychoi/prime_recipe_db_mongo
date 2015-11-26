@@ -1,8 +1,18 @@
-<md-content class="search-recipe-container md-whiteframe-2dp" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content class="search-recipe-container" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
     <h1>Search Results</h1>
 
     <h2>{{numberOfResults}} results</h2>
 
-    <p ng-repeat="result in resultArray">{{result.name}}</p>
+    <md-list>
+        <md-list-item ng-repeat="result in resultArray">
+            <md-button ng-click="toggleModal(result)">{{result.name}}</md-button>
+        </md-list-item>
+    </md-list>
+
+    <modal-dialog show='modalShown' width='75%' height='80%'>
+        <md-content>
+            <recipe info="resultArray[currentIndex]" message="saveSuccessMessage" action="addToMealPlan(resultArray[currentIndex])"></recipe>
+        </md-content>
+    </modal-dialog>
 
 </md-content>

@@ -1,1 +1,13 @@
 <h1>{{info.name}}</h1>
+
+<md-button ng-hide="check" class="md-accent md-raised md-hue-3" ng-click="action(info)">Add to Meal Plan</md-button>
+<p ng-show="message">Recipe saved to Meal Plan!</p>
+
+<p>source: {{info.source}}</p>
+
+<h2>Ingredients</h2>
+<ul><li ng-repeat="ingredient in info.ingredients">{{ingredient.amount}} {{ingredient.name}}</li></ul>
+
+<h2>Instructions</h2>
+<p ng-repeat="instruction in info.instructions">Step {{instruction.step}}: {{instruction.instruction}}</p>
+

@@ -4,6 +4,8 @@ myApp.directive('recipe',
             restrict: "AE",
             scope: {
                 info: "=",
+                message:'=',
+                check: '=',
                 action: '&'
             },
             templateUrl: "./templates/recipe.html"

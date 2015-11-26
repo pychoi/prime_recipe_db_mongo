@@ -25,4 +25,22 @@ myApp.controller('ResultController', ['$scope', '$location', '$http', '$routePar
 
     }
 
+    // Modal
+    $scope.modalShown = false;
+    $scope.currentIndex;
+    $scope.toggleModal = function(result) {
+        $scope.modalShown = !$scope.modalShown;
+        $scope.currentIndex = $scope.resultArray.indexOf(result);
+        //console.log($scope.currentIndex);
+    };
+
+    // Add to Meal Plan Button
+    $scope.saveSuccessMessage = false;
+    $scope.addToMealPlan = function(dish){
+
+        // Save dish to user profile
+        $http.put('/user/mealPlan', dish).then(function(){
+            $scope.saveSuccessMessage = true;
+        });
+    }
 }]);

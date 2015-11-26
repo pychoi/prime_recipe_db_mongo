@@ -1,5 +1,5 @@
 myApp.controller('HomeController', ['$scope','$http', function($scope, $http){
-    console.log("HomeController is working!");
+    //console.log("HomeController is working!");
 
     $scope.randomResult = {};
 
@@ -10,5 +10,21 @@ myApp.controller('HomeController', ['$scope','$http', function($scope, $http){
     };
 
     $scope.randomRecipe();
+
+    // Modal
+    $scope.modalShown = false;
+    $scope.toggleModal = function() {
+        $scope.modalShown = !$scope.modalShown;
+    };
+
+    // Add to Meal Plan Button
+    $scope.saveSuccessMessage = false;
+    $scope.addToMealPlan = function(dish){
+
+        // Save dish to user profile
+        $http.put('/user/mealPlan', dish).then(function(){
+            $scope.saveSuccessMessage = true;
+        });
+    }
 
 }]);

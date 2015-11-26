@@ -1,4 +1,4 @@
-<md-content ng-show="searchMode" class="search-recipe-container" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content class="search-recipe-container" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
 
     <h1 class="md-display-1">Search Recipes</h1>
 
@@ -39,20 +39,4 @@
             <md-button class="md-raised md-accent md-hue-3 search-button" ng-click="searchCategories()">Search!</md-button>
         </div>
     </div>
-</md-content>
-
-<md-content ng-hide="searchMode" class="search-recipe-container md-whiteframe-2dp" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
-    <h1>Recipe</h1>
-    <div ng-repeat="result in resultArray">
-        <recipe info="result"></recipe>
-        <!--<ol>-->
-            <!--<li ng-repeat="result in resultArray">{{result.name}}</li>-->
-        <!--</ol>-->
-    </div>
-
-    <!--result.name as links-->
-    <!--have all content on the right or bottom...somewhere.  set ng-show-->
-    <!--change ng-show value when link is click so that only one recipe is shown-->
-
-
 </md-content>

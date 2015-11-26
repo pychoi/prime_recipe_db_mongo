@@ -27,14 +27,7 @@ myApp.controller('SearchController', ['$scope', '$http', 'DataService', '$locati
     };
 
     $scope.searchCategories = function(){
-
         $location.path('/result').search({query: {categories: $scope.search.categories}});
-
-        //$http.get('/search/categories', {params:{categories: $scope.search.categories}}).then(function(response){
-        //    console.log(response.data);
-        //    $scope.resultArray = response.data;
-        //    //$window.location.href='#result';
-        //});
     };
 
 }]);
