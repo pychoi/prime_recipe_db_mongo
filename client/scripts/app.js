@@ -15,8 +15,8 @@ myApp.config(['$routeProvider', '$mdThemingProvider', function($routeProvider, $
             controller: 'EnterController'
         }).
         when('/meal', {
-            templateUrl: './routes/meal.html',
-            controller: 'MealController'
+            templateUrl: './routes/meal.html'
+            //controller: 'MealController'
         }).
         when('/list', {
             templateUrl: './routes/list.html',

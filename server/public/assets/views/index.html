@@ -11,25 +11,22 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
 
 </head>
-<body>
+<body ng-app="myApp">
 
-    <div class="instructions">
-        <div class="container">
-            <h1 class="lead">Passport Login</h1>
-        </div>
-    </div>
-    <div class="container">
+    <div class="log-in md-whiteframe-2dp" layout-padding flex-sm="70" flex-offset-sm="15" flex="40" flex-offset="30" flex-gt-lg="20" flex-offset-gt-lg="40">
+        <h1>grace's kitchen</h1>
+        <h2>Login</h2>
         <form action="/" method="post">
-            <div>
+            <md-input-container class="md-accent">
                 <label for="username">Username:</label>
                 <input type="text" name="username" id="username"/>
-            </div>
-            <div>
+            </md-input-container>
+            <md-input-container class="md-accent">
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password"/>
-            </div>
+            </md-input-container>
             <div>
-                <input type="submit" value="Log In"/>
+                <md-button aria-label="Submit Button"><input type="submit" value="Log In"/></md-button>
                 <a href="/register">Register</a>
             </div>
         </form>

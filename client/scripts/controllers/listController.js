@@ -1,11 +1,10 @@
 myApp.controller('ListController', ['$scope','$http', function($scope,$http){
-    console.log("ListController is working!");
+    //console.log("ListController is working!");
 
     $scope.noSavedRecipesMessage = false;
     $scope.savedList = [];
     // Hide Add to Meal Plan Button
     $scope.checkSaved = true;
-
 
     //GET all items in the list
     $scope.getList = function(){
@@ -38,7 +37,6 @@ myApp.controller('ListController', ['$scope','$http', function($scope,$http){
         $scope.modalShown = !$scope.modalShown;
         $scope.currentIndex = $scope.savedList.indexOf(recipe);
     };
-
 
     $scope.getList();
 

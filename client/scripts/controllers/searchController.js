@@ -1,6 +1,6 @@
 myApp.controller('SearchController', ['$scope', '$http', 'DataService', '$location', function($scope, $http, DataService, $location){
 
-    console.log("search controller is here!");
+    //console.log("search controller is here!");
 
     $scope.dataService = DataService;
 

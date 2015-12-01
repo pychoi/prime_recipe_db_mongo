@@ -50,6 +50,12 @@ md-checkbox {
     margin-left: 20px;
 }
 
+/* ------ LOGIN PAGE ------*/
+.log-in {
+    margin-top: 80px;
+    padding: 30px 20px;
+}
+
 /* ------ HOME PAGE ------*/
 .home-container {
     min-height: 700px;
@@ -173,3 +179,12 @@ md-checkbox {
     font-weight: bold;
     font-family: 'arial', 'sans-serif';
 }
+
+.strike {
+    text-decoration: line-through;
+}
+
+/*.checklist {*/
+    /*font-size: 30px;*/
+    /*text-decoration: line-through;*/
+/*}*/

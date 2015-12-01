@@ -24,7 +24,7 @@ router.get('/mealPlan', function(req,res){
 
 // Remove saved recipe from Meal Plan
 router.put('/mealPlan/remove', function(req,res){
-    Users.findOneAndUpdate({_id: req.user._id}, { $pull: {mealSaved: req.body}}, {upsert: true}, function(err, result){
+    Users.findOneAndUpdate({_id: req.user._id}, { $pull: {mealSaved: req.body}}, function(err, result){
         if(err) return err;
         res.send(result);
     });

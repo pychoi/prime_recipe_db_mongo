@@ -4,17 +4,12 @@
     <h2 ng-show="noSavedRecipesMessage">Your Groceries List is Empty</h2>
 
     <div ng-repeat="recipe in savedList">
-        <md-button ng-click="toggleModal(recipe)">{{recipe.name}}</md-button>
-        <p ng-repeat="ingredient in recipe.ingredients">{{ingredient.name}}</p>
-        <!--<md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>-->
-
+        <h2>{{recipe.name}}</h2>
+        <md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>
         <md-button class="md-warn" ng-click="removeFromList(recipe)">Remove</md-button>
-
-        <!--<md-button class="md-raised md-accent md-hue-3" ng-click="addToList(recipe)">Add to Groceries List</md-button>-->
+        <md-checkbox class="checklist md-hue-3" aria-label="List" ng-repeat="ingredient in recipe.ingredients" ng-model="checkedOff"><p ng-class="{strike: checkedOff}">{{ingredient.name}}</p></md-checkbox>
+        <!--<md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>-->
     </div>
-
-
-
 
     <md-button class="md-raised md-warn" ng-click="resetList()">Reset List</md-button>
 

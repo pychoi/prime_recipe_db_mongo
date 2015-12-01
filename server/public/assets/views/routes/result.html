@@ -1,7 +1,7 @@
 <md-content class="search-recipe-container" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
     <h1>Search Results</h1>
 
-    <h2>{{numberOfResults}} results</h2>
+    <h2>{{numberOfResults}} result(s)</h2>
 
     <md-list>
         <md-list-item ng-repeat="result in resultArray">
@@ -11,7 +11,7 @@
 
     <modal-dialog show='modalShown' width='75%' height='80%'>
         <md-content>
-            <recipe info="resultArray[currentIndex]" message="saveSuccessMessage" action="addToMealPlan(resultArray[currentIndex])"></recipe>
+            <recipe info="resultArray[currentIndex]" message="saveSuccessMessage" action="addToMealPlan(resultArray[currentIndex])" check="checkMealPlan"></recipe>
         </md-content>
     </modal-dialog>
 
