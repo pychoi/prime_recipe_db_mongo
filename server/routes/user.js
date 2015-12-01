@@ -63,5 +63,4 @@ router.delete('/groceriesList', function(req,res){
     });
 });
 
-
 module.exports = router;

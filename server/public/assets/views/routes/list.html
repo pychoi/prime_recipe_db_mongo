@@ -7,15 +7,16 @@
         <h2>{{recipe.name}}</h2>
         <md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>
         <md-button class="md-warn" ng-click="removeFromList(recipe)">Remove</md-button>
-        <md-checkbox class="checklist md-hue-3" aria-label="List" ng-repeat="ingredient in recipe.ingredients" ng-model="checkedOff"><p ng-class="{strike: checkedOff}">{{ingredient.name}}</p></md-checkbox>
-        <!--<md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>-->
+        <md-checkbox class="checklist md-hue-3" aria-label="List" ng-repeat="ingredient in recipe.ingredients" ng-model="ingredient.checkedOff" ng-click="saveStatus()">
+            <p ng-class="{strike: ingredient.checkedOff}">{{ingredient.name}}</p>
+        </md-checkbox>
     </div>
 
     <md-button class="md-raised md-warn" ng-click="resetList()">Reset List</md-button>
 
     <modal-dialog show='modalShown' width='75%' height='80%'>
         <md-content>
-            <recipe info="savedList[currentIndex]" check="checkSaved"></recipe>
+            <recipe info="savedList[currentIndex]" check="checkMealPlan"></recipe>
         </md-content>
     </modal-dialog>
 

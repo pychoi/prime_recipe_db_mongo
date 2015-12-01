@@ -1,7 +1,6 @@
 myApp.controller('MealController', ['$scope','$http', function($scope,$http){
     //console.log("MealController is working!");
 
-    //$scope.randomResult = {};
     $scope.savedRecipes = [];
     $scope.savedList = [];
     $scope.noSavedRecipesMessage = false;
@@ -9,14 +8,6 @@ myApp.controller('MealController', ['$scope','$http', function($scope,$http){
     $scope.currentIndex;
     //$scope.showRandom = false;
     $scope.disableListButton = {};
-
-    // Random Recipe Generation
-    //$scope.randomRecipe = function(){
-    //    $http.get('/random/').then(function(response){
-    //        $scope.randomResult = response.data;
-    //        $scope.showRandom = true;
-    //    });
-    //};
 
     // Display User's Saved Recipes
     $scope.getSavedRecipes = function(){

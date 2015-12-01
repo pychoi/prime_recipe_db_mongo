@@ -1,10 +1,12 @@
-myApp.controller('HomeController', ['$scope','$http', function($scope, $http){
+myApp.controller('HomeController', ['$scope','$http','DataService', function($scope, $http, DataService){
     //console.log("HomeController is working!");
 
     $scope.randomResult = {};
     $scope.checkMealPlan = false;
     $scope.modalShown = false;
     $scope.showRandom = false;
+
+    $scope.dataService = DataService;
 
     $scope.randomRecipe = function(){
         $scope.checkMealPlan = false;
@@ -24,10 +26,23 @@ myApp.controller('HomeController', ['$scope','$http', function($scope, $http){
         });
     };
 
+    // GET random recipe from DB when clicked
     $scope.randomRecipeClick = function(){
         $scope.showRandom = true;
         $scope.randomRecipe();
     };
+
+    //$scope.getMealPlan = function(){
+    //    if($scope.dataService.mealPlanData() === undefined) {
+    //        console.log("getting user list from user service");
+    //        $scope.dataService.retrieveData()
+    //            .then(function() {
+    //                $scope.users = $scope.dataService.mealPlanData();
+    //            });
+    //    } else {
+    //        $scope.users = $scope.dataService.mealPlanData();
+    //    }
+    //};
 
     $scope.randomRecipe();
 
