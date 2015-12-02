@@ -13,6 +13,7 @@ var search = require('./routes/search');
 var random = require('./routes/random');
 var register = require('./routes/register');
 var user = require('./routes/user');
+var logout = require('./routes/logout');
 
 // App Set //
 app.set('port', process.env.PORT || 5000);
@@ -35,6 +36,7 @@ app.use(passport.session());
 // Routes
 app.use('/register', register);
 app.use('/user', user);
+app.use('/logout', logout);
 app.use('/submit', submit);
 app.use('/search', search);
 app.use('/random', random);
