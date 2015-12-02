@@ -1,5 +1,5 @@
 /* ------ GENERAL STYLES ------ */
-h1, h2, h3, h4, h5, h6, p, li {
+h1, h2, h3, h4, h5, h6, p, li, a {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
     color: #444;
@@ -52,8 +52,34 @@ md-checkbox {
 
 /* ------ LOGIN PAGE ------*/
 .log-in {
-    margin-top: 80px;
-    padding: 30px 20px;
+    margin: 100px auto 0 auto;
+    padding: 30px 30px;
+    width: 20%;
+}
+
+.logo {
+    text-align: center;
+    font-size: 22px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.log-in h2 {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.log-in md-input-container:not(.md-input-invalid) {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.log-in .md-button {
+    padding: 0;
 }
 
 /* ------ HOME PAGE ------*/

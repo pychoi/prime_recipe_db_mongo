@@ -1,9 +1,11 @@
-<md-content class="home-container" layout="column" layout-align="start center" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content ng-init="randomRecipe()" class="home-container" layout="column" layout-align="start center" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
     <h1 class="md-display-1">Dish of this Moment...</h1>
 
     <h2 class="md-display-2">{{randomResult.name}}</h2>
 
     <md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal()">View Recipe</md-button>
+
+    <md-button class="md-accent md-hue-3" ng-click="randomRecipeClick()">Gimme Another Dish</md-button>
 
     <modal-dialog show='modalShown' width='75%' height='80%'>
         <md-content>

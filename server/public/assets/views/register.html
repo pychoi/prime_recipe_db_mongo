@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
@@ -11,30 +11,28 @@
 
 </head>
 <body>
-<div class="instructions">
-    <div class="container">
-        <h1 class="lead">Register New User</h1>
+
+    <div class="container" layout="column" layout-align="start center">
+
+        <div class="log-in md-whiteframe-1dp">
+            <h1 class="logo">Grace's Kitchen</h1>
+            <h2>Register New User</h2>
+            <form action="/register" method="post">
+                <md-input-container class="md-accent">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username">
+                </md-input-container>
+                <md-input-container class="md-accent">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                </md-input-container>
+
+                <div layout="column" layout-align="center center">
+                <md-button class="md-raised" aria-label="Register Button" type="submit">Register</md-button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div class="container">
-    <form action="/register" method="post">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
-        </div>
-
-        <input type="submit" value="Register"/>
-
-
-
-    </form>
-</div>
-
 
     <!--SCRIPTS-->
     <script type="text/javascript" src="/vendors/angular.min.js"></script>

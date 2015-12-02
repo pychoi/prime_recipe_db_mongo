@@ -127,10 +127,15 @@
 
 <md-content ng-hide="searchMode" class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-md="50" flex-offset-gt-md="25">
     <div>
-        <p>{{successMessage}}</p>
+        <h1>{{successMessage}}</h1>
+
         <h1>{{newRecipe.name}}</h1>
-        <h2>{{newRecipe.source}}</h2>
-        <div ng-repeat="foo in newRecipe.ingredients">{{foo.name}}: {{foo.amount}}</div>
-        <div ng-repeat="foo in newRecipe.instructions">{{foo.step}}: {{foo.instruction}}</div>
+        <p>source: {{newRecipe.source}}</p>
+
+        <h2>Ingredients</h2>
+        <ul><li ng-repeat="ingredient in newRecipe.ingredients">{{ingredient.amount}} {{ingredient.name}}</li></ul>
+
+        <h2>Instructions</h2>
+        <p ng-repeat="instruction in newRecipe.instructions">Step {{instruction.step}}: {{instruction.instruction}}</p>
     </div>
 </md-content>

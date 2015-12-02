@@ -20,6 +20,7 @@ myApp.controller('HomeController', ['$scope','$http','DataService', function($sc
                 for (var i = 0; i < $scope.savedRecipes.length; i++) {
                     if ($scope.savedRecipes[i]._id == $scope.randomResult._id) {
                         $scope.checkMealPlan = true;
+                        $scope.saveSuccessMessage = true;
                     }
                 }
             });
@@ -44,7 +45,7 @@ myApp.controller('HomeController', ['$scope','$http','DataService', function($sc
     //    }
     //};
 
-    $scope.randomRecipe();
+    //$scope.randomRecipe();
 
     // Modal
     $scope.toggleModal = function() {
