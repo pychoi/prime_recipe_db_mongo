@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="/vendors/angular-material.min.css">
+    <link rel="stylesheet" href="/vendors/font-awesome/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/styles/style.css">
+
+</head>
+<body class="front-pages">
+
+<div class="container" layout="column" layout-align="start center">
+
+    <div class="log-in md-whiteframe-1dp">
+        <h1 class="logo">Grace's Kitchen</h1>
+        <h2>Register New User</h2>
+        <p class="register-failed-message">Please Try Again - Username Already Exist</p>
+        <form action="/register" method="post">
+            <md-input-container class="md-accent">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </md-input-container>
+            <md-input-container class="md-accent">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </md-input-container>
+
+            <div layout="column" layout-align="center center">
+                <md-button class="md-raised" aria-label="Register Button" type="submit">Register</md-button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--SCRIPTS-->
+<script type="text/javascript" src="/vendors/angular.min.js"></script>
+<script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+<script type="text/javascript" src="/vendors/angular-messages.min.js"></script>
+<script type="text/javascript" src="/vendors/angular-animate.min.js"></script>
+<script type="text/javascript" src="/vendors/angular-aria.min.js"></script>
+<script type="text/javascript" src="/vendors/angular-material.min.js"></script>
+<script type="text/javascript" src="/assets/scripts/app.min.js"></script>
+<script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>
+<script type="text/javascript" src="/assets/scripts/data.min.js"></script>
+<script type="text/javascript" src="/assets/scripts/controllers.min.js"></script>
+</body>
+</html>

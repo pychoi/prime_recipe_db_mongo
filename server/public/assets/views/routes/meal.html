@@ -23,7 +23,7 @@
         <h2 ng-show="noSavedRecipesMessage">You don't have any saved recipes</h2>
 
         <div ng-repeat="recipe in savedRecipes">
-            <div layout="row" layout-align="space-between center">
+            <div layout-gt-md="row" layout-gt-sm="column" layout-align-gt-md="space-between center" layout-align-gt-sm="center start">
             <h2>{{recipe.name}}</h2>
                 <div layout-align="start center">
                     <md-button class="md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>

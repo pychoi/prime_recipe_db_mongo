@@ -8,9 +8,11 @@
 
 <p>source: {{info.source}}</p>
 
+<hr>
 <h2>Ingredients</h2>
 <ul><li ng-repeat="ingredient in info.ingredients">{{ingredient.amount}} {{ingredient.name}}</li></ul>
 
+<hr>
 <h2>Instructions</h2>
 <p ng-repeat="instruction in info.instructions">Step {{instruction.step}}: {{instruction.instruction}}</p>
 
