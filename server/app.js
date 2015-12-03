@@ -44,7 +44,9 @@ app.use('/', index);
 
 // Mongo Connection //
 var mongoURI = MONGOLAB_URI;
-    //"mongodb://localhost:27017/recipe_db";
+
+//"mongodb://localhost:27017/recipe_db";
+
 var mongoDB = mongoose.connect(mongoURI).connection;
 
 mongoDB.on('error', function(err){
