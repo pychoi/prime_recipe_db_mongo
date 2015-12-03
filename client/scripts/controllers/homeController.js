@@ -2,14 +2,16 @@ myApp.controller('HomeController', ['$scope','$http','DataService', function($sc
     //console.log("HomeController is working!");
 
     $scope.randomResult = {};
-    $scope.checkMealPlan = false;
+
     $scope.modalShown = false;
     $scope.showRandom = false;
+
 
     $scope.dataService = DataService;
 
     $scope.randomRecipe = function(){
         $scope.checkMealPlan = false;
+        $scope.saveSuccessMessage = false;
         $http.get('/random/').then(function(response){
             $scope.randomResult = response.data;
 
@@ -57,6 +59,7 @@ myApp.controller('HomeController', ['$scope','$http','DataService', function($sc
         // Save dish to user profile
         $http.put('/user/mealPlan', dish).then(function(){
             $scope.checkMealPlan = true;
+            $scope.saveSuccessMessage = true;
         });
     }
 

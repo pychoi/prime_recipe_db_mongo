@@ -57,16 +57,16 @@ myApp.controller('EnterController', ["$scope", "$http", "DataService", function(
         }
     };
 
-    $scope.checkInstruction = function(steps){
-
-        for(var i = 0; i < steps.length; i++) {
-
-            if (steps[i].instruction) {
-                $scope.noStepErrorMessage = false;
-                $scope.accordion = 4;
-            }
-        }
-    };
+    //$scope.checkInstruction = function(steps){
+    //
+    //    for(var i = 0; i < steps.length; i++) {
+    //
+    //        if (steps[i].instruction) {
+    //            $scope.noStepErrorMessage = false;
+    //            $scope.accordion = 4;
+    //        }
+    //    }
+    //};
 
     $scope.toggleChecked = function(foo){
         if ($scope.recipe.categories.indexOf(foo) === -1){

@@ -40,6 +40,7 @@ myApp.controller('ResultController', ['$scope', '$location', '$http', '$routePar
             for (var i = 0; i < $scope.savedRecipes.length; i++) {
                 if ($scope.savedRecipes[i]._id == result._id) {
                     $scope.checkMealPlan = true;
+                    $scope.saveSuccessMessage = true;
                 }
             }
         });

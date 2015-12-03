@@ -1,7 +1,10 @@
-<h1>{{info.name}}</h1>
+<h1 class="recipe-name">{{info.name}}</h1>
 
-<md-button ng-disabled="check" class="md-accent md-raised md-hue-3" ng-click="action(info)">Add to Meal Plan</md-button>
-<p ng-show="message">Recipe is saved to Meal Plan!</p>
+<div layout="column" layout-align="center center">
+    <md-button ng-disabled="check" class="md-accent md-raised md-hue-3" ng-click="action(info)">Add to Meal Plan</md-button>
+    <p ng-show="message">Recipe is in Meal Plan!</p>
+</div>
+
 
 <p>source: {{info.source}}</p>
 

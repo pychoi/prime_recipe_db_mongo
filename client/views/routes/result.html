@@ -1,15 +1,15 @@
-<md-content class="search-recipe-container" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content class="search-recipe-container" layout-padding flex="80" flex-offset="10" flex-gt-lg="50" flex-offset-gt-lg="25">
     <h1>Search Results</h1>
 
     <h2>{{numberOfResults}} result(s)</h2>
 
     <md-list>
         <md-list-item ng-repeat="result in resultArray">
-            <md-button ng-click="toggleModal(result)">{{result.name}}</md-button>
+            <md-button class="result-button" ng-click="toggleModal(result)">{{result.name}}</md-button>
         </md-list-item>
     </md-list>
 
-    <modal-dialog show='modalShown' width='75%' height='80%'>
+    <modal-dialog show='modalShown' width='80%' height='80%'>
         <md-content>
             <recipe info="resultArray[currentIndex]" message="saveSuccessMessage" action="addToMealPlan(resultArray[currentIndex])" check="checkMealPlan"></recipe>
         </md-content>

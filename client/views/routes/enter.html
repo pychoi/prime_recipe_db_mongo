@@ -1,4 +1,4 @@
-<md-content ng-show="searchMode" class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content ng-show="searchMode" class="enter-recipe-container" flex="80" flex-offset="10" flex-gt-lg="50" flex-offset-gt-lg="25">
     <h1 class="md-display-1">Enter Recipe</h1>
 
 <div ng-init="accordion=1">
@@ -23,7 +23,10 @@
                 <input type="text" ng-model="recipe.source" ng-disabled="disable" id="source" name="source">
             </md-input-container>
         </form>
-        <md-button class="md-raised md-accent md-hue-3" ng-disabled="enterRecipeForm.$invalid" ng-click="accordion=2">Next</md-button>
+        <div layout="row">
+            <md-button class="md-raised md-accent md-hue-3" ng-disabled="enterRecipeForm.$invalid" ng-click="accordion=2">Next</md-button>
+            <p class="error-message" ng-show="enterRecipeForm.$invalid"> Enter recipe name to continue</p>
+        </div>
     </div>
 
 <!-- ENTER INGREDIENTS SECTION -->
@@ -55,9 +58,9 @@
 
                 </md-input-container>
             </form>
+
             <md-button class="md-raised add-ingredient-button" ng-click="addIngredient()" ng-disabled="enterIngredients.$invalid">Add Ingredient</md-button>
         </div>
-
 
         <div>
             <div layout="row" layout-sm="column" layout-align-sm="center center" ng-repeat="foo in recipe.ingredients">
@@ -67,7 +70,11 @@
             </div>
         </div>
 
-        <md-button class="md-raised md-accent md-hue-3" ng-disabled="checkIngredient" ng-click="accordion = 3">Next</md-button>
+        <div layout="row">
+            <md-button class="md-raised md-accent md-hue-3" ng-disabled="checkIngredient" ng-click="accordion = 3">Next</md-button>
+            <p class="error-message" ng-show="checkIngredient"> At least one ingredient is required to continue</p>
+        </div>
+
     </div>
 
 <!--ENTER INSTRUCTIONS SECTION-->
@@ -85,7 +92,7 @@
                     <label for="instruction">Step {{step.step}} Instructions</label>
                     <textarea ng-model="step.instruction" required id="instruction" name="instruction"></textarea>
 
-                    <div ng-messages="enterInstructions.instruction.$error">
+                    <div ng-messages="enterInstructions.instruction.$error" ng-if="enterInstructions.instruction.$touched">
                         <div ng-message="required">Instruction is Required!</div>
                     </div>
 
@@ -93,11 +100,14 @@
 
             </form>
             <md-button class="md-warn delete-ingredient-button" ng-click="removeStep(step)">Remove</md-button>
-
         </div>
 
         <md-button class="md-raised add-step-button" ng-click="addNewStep()">Add Step</md-button><br/>
-        <md-button class="md-raised md-accent md-hue-3" ng-disabled="enterInstructions.$invalid" ng-click="accordion=4">Next</md-button>
+
+        <div layout="row">
+            <md-button class="md-raised md-accent md-hue-3" ng-disabled="!recipe.instructions[0].instruction" ng-click="accordion = 4">Next</md-button>
+            <p class="error-message" ng-show="!recipe.instructions[0].instruction"> At least one step + instruction is required to continue</p>
+        </div>
     </div>
 
 
@@ -121,7 +131,7 @@
                 </div>
     </div>
 </div>
-        <md-button class="md-raised md-accent md-hue-3 submit-recipe-button" ng-disabled="enterRecipeForm.$invalid || checkIngredient || noStepErrorMessage" ng-click="submitRecipe()">Submit Recipe</md-button>
+        <md-button class="md-raised md-accent md-hue-3 submit-recipe-button" ng-disabled="enterRecipeForm.$invalid || checkIngredient || !recipe.instructions[0].instruction" ng-click="submitRecipe()">Submit Recipe</md-button>
 
 </md-content>
 

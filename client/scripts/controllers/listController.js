@@ -2,6 +2,7 @@ myApp.controller('ListController', ['$scope','$http',function($scope,$http){
     //console.log("ListController is working!");
 
     $scope.noSavedRecipesMessage = false;
+    $scope.saveSuccessMessage = false;
     $scope.savedList = [];
 
     // Hide Add to Meal Plan Button
@@ -45,6 +46,7 @@ myApp.controller('ListController', ['$scope','$http',function($scope,$http){
             for (var i = 0; i < $scope.savedRecipes.length; i++) {
                 if ($scope.savedRecipes[i]._id == recipe._id) {
                     $scope.checkMealPlan = true;
+                    $scope.saveSuccessMessage = true;
                 }
             }
         });

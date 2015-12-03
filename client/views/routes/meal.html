@@ -1,4 +1,4 @@
-<md-content class="home-container" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content class="home-container" flex="90" flex-offset="5" flex-gt-lg="70" flex-offset-gt-lg="15">
 
     <div ng-controller="HomeController" layout="column" layout-align="start center">
         <md-button class="md-raised" ng-click="randomRecipeClick()">Gimme A Random Dish!</md-button>
@@ -9,7 +9,7 @@
                 <md-button class="md-accent md-hue-3" ng-click="toggleModal()">View Recipe</md-button>
             </div>
 
-        <modal-dialog show='modalShown' width='75%' height='80%'>
+        <modal-dialog show='modalShown' width='80%' height='80%'>
             <md-content>
                 <recipe info="randomResult" message="saveSuccessMessage" action="addToMealPlan(randomResult)" check="checkMealPlan"></recipe>
             </md-content>
@@ -23,17 +23,23 @@
         <h2 ng-show="noSavedRecipesMessage">You don't have any saved recipes</h2>
 
         <div ng-repeat="recipe in savedRecipes">
+            <div layout="row" layout-align="space-between center">
             <h2>{{recipe.name}}</h2>
-            <md-button class="md-raised md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>
+                <div layout-align="start center">
+                    <md-button class="md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>
+                    <md-button class="md-warn" ng-click="removeFromMealPlan(recipe)">Remove</md-button>
+                    <md-button class="md-raised md-accent md-hue-3" ng-click="addToList(recipe)" ng-disabled="disableListButton[recipe.name]">Add to Groceries List</md-button>
+                </div>
+            </div>
 
-            <md-button class="md-raised md-warn" ng-click="removeFromMealPlan(recipe)">Remove From Meal Plan</md-button>
-
-            <md-button class="md-raised md-accent md-hue-3" ng-click="addToList(recipe)" ng-disabled="disableListButton[recipe.name]" >Add to Groceries List</md-button>
+            <!--<md-button class="md-accent md-hue-3" ng-click="toggleModal(recipe)">View Recipe</md-button>-->
+            <!--<md-button class="md-warn" ng-click="removeFromMealPlan(recipe)">Remove From Meal Plan</md-button>-->
+            <!--<md-button class="md-raised" ng-click="addToList(recipe)" ng-disabled="disableListButton[recipe.name]">Add to Groceries List</md-button>-->
         </div>
 
-        <modal-dialog show='modalShown' width='75%' height='80%'>
+        <modal-dialog show='modalShown' width='80%' height='80%'>
             <md-content>
-                <recipe info="savedRecipes[currentIndex]" check="checkMealPlan"></recipe>
+                <recipe info="savedRecipes[currentIndex]" message="saveSuccessMessage" check="checkMealPlan"></recipe>
             </md-content>
         </modal-dialog>
     </div>

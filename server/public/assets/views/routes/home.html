@@ -1,4 +1,4 @@
-<md-content ng-init="randomRecipe()" class="home-container" layout="column" layout-align="start center" layout-padding flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
+<md-content ng-init="randomRecipe()" class="home-container home-text" layout="column" layout-align="start center" layout-padding flex="80" flex-offset="10" flex-gt-lg="70" flex-offset-gt-lg="15">
     <h1 class="md-display-1">Dish of this Moment...</h1>
 
     <h2 class="md-display-2">{{randomResult.name}}</h2>
@@ -7,7 +7,7 @@
 
     <md-button class="md-accent md-hue-3" ng-click="randomRecipeClick()">Gimme Another Dish</md-button>
 
-    <modal-dialog show='modalShown' width='75%' height='80%'>
+    <modal-dialog show='modalShown' width='80%' height='80%'>
         <md-content>
             <recipe info="randomResult" message="saveSuccessMessage" action="addToMealPlan(randomResult)" check="checkMealPlan"></recipe>
         </md-content>

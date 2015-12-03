@@ -53,6 +53,7 @@ myApp.controller('MealController', ['$scope','$http', function($scope,$http){
             for (var i = 0; i < $scope.savedRecipes.length; i++) {
                 if ($scope.savedRecipes[i]._id == recipe._id) {
                     $scope.checkMealPlan = true;
+                    $scope.saveSuccessMessage = true;
                 }
             }
         });

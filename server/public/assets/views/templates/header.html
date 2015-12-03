@@ -1,14 +1,24 @@
 <!--MOBILE HEADER-->
-<md-toolbar class="md-whiteframe-1dp md-hue-1" layout="row" layout-align="end center" hide-gt-md>
+<md-toolbar class="md-whiteframe-1dp md-hue-1" layout="row" layout-align="space-between center" hide-gt-lg>
 
     <div>
-        <p>grace's kitchen</p>
+        <form action="/logout" method="get">
+            <md-button class="logout-button" aria-label="Logout" type="submit">
+                <i class="fa fa-sign-out fa-2x"></i>
+                <md-tooltip md-autohide>
+                    Logout
+                </md-tooltip>
+            </md-button>
+        </form>
     </div>
 
-    <div>
+
+    <div layout="row" class="header">
+        <md-button class="logo-button">grace's kitchen</md-button>
+
         <md-menu md-offset="0 60">
             <md-button aria-label="Open Menu" ng-click="$mdOpenMenu($event)" class="md-icon-button">
-                <i class="fa fa-bars fa-lg"></i>
+                <i class="fa fa-bars fa-2x"></i>
             </md-button>
 
             <md-menu-content width="4">
@@ -19,7 +29,7 @@
                     <md-button><a href="#search"><md-list-item class="nav-button-menu"><i class="fa fa-search"></i><span class="menu-text">Search Recipes</span></md-list-item></a></md-button>
                 </md-menu-item>
                 <md-menu-item>
-                    <md-button><a href="#enter"><md-list-item class="nav-button-menu"><i class="fa fa-plus"></i><span class="menu-text">Enter Recipes</span></md-list-item></a></md-button>
+                    <md-button><a href="#enter"><md-list-item class="nav-button-menu"><i class="fa fa-plus"></i><span class="menu-text">Enter Recipe</span></md-list-item></a></md-button>
                 </md-menu-item>
                 <md-menu-item>
                     <md-button><a href="#meal"><md-list-item class="nav-button-menu"><i class="fa fa-cutlery"></i><span class="menu-text">Meal Plan</span></md-list-item></a></md-button>
@@ -27,6 +37,7 @@
                 <md-menu-item>
                     <md-button><a href="#list"><md-list-item class="nav-button-menu"><i class="fa fa-shopping-cart"></i><span class="menu-text">Groceries List</span></md-list-item></a></md-button>
                 </md-menu-item>
+
             </md-menu-content>
 
         </md-menu>
@@ -34,12 +45,17 @@
 </md-toolbar>
 
 <!--DESKTOP HEADER-->
-<md-toolbar class="md-whiteframe-1dp md-hue-1" layout="row" layout-align="space-around center" hide show-gt-md>
-    <div class="md-toolbar-tools" layout-align="start center">
-        <h2>grace's kitchen</h2>
+<md-toolbar class="md-whiteframe-1dp md-hue-1" layout="row" layout-align="space-around center" hide show-gt-lg>
+    <div class="md-toolbar-tools header" layout-align="start center">
+        <a href="#home"><md-button class="logo-button">grace's kitchen</md-button></a>
 
         <form action="/logout" method="get">
-            <md-button type="submit">Log Out</md-button>
+            <md-button class="logout-button" aria-label="Logout" type="submit">
+                <i class="fa fa-sign-out fa-lg"></i>
+                <md-tooltip md-autohide>
+                    Logout
+                </md-tooltip>
+            </md-button>
         </form>
 
 
@@ -50,7 +66,7 @@
     <div class="md-toolbar-tools" layout-align="end center">
         <a href="#home"><md-button class="nav-button">Home</md-button></a>
         <a href="#search"><md-button class="nav-button">Search Recipes</md-button></a>
-        <a href="#enter"><md-button class="nav-button">Enter Recipes</md-button></a>
+        <a href="#enter"><md-button class="nav-button">Enter Recipe</md-button></a>
         <a href="#meal"><md-button class="nav-button">Meal Plan</md-button></a>
         <a href="#list"><md-button class="nav-button">Groceries List</md-button></a>
     </div>
