@@ -43,9 +43,7 @@ app.use('/random', random);
 app.use('/', index);
 
 // Mongo Connection //
-var mongoURI = "mongodb://heroku_qg09jp2d:qkj0lgfluljvno37odisedi8eg@ds063124.mongolab.com:63124/heroku_qg09jp2d";
-
-//"mongodb://localhost:27017/recipe_db";
+var mongoURI = process.env.MONGOLAB_URI || "mongodb://localhost:27017/recipe_db";
 
 var mongoDB = mongoose.connect(mongoURI).connection;
 
