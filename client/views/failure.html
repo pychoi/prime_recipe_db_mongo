@@ -2,6 +2,7 @@
 <html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login Failed!</title>
 
     <link rel="stylesheet" href="/vendors/angular-material.min.css">
@@ -10,11 +11,15 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
 
 </head>
-<body>
+<body class="front-pages">
 
-    <div layout="column" layout-align="start center">
-        <h1>Failed to Login!</h1>
-        <a href="/"><md-button class="md-raised">Back to Login</md-button></a>
+    <div class="container" layout="column" layout-align="start center">
+
+        <div class="log-in md-whiteframe-1dp" layout="column" layout-align="center center">
+            <h1 class="logo">Grace's Kitchen</h1>
+            <h2>Failed to Login!</h2>
+            <a href="/"><md-button class="md-raised">Back to Login</md-button></a>
+        </div>
     </div>
 
     <!--SCRIPTS-->

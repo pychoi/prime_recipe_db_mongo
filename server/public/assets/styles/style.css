@@ -1,4 +1,9 @@
 /* ------ GENERAL STYLES ------ */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 h1, h2, h3, h4, h5, h6, p, li, a {
     font-family: 'Lato', sans-serif;
     font-weight: 300;
@@ -6,11 +11,15 @@ h1, h2, h3, h4, h5, h6, p, li, a {
 }
 
 p, li {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 a, a:hover {
     text-decoration: none;
+}
+
+md-content {
+    background-color: transparent;
 }
 
 .front-pages {
@@ -34,11 +43,18 @@ md-checkbox {
     margin: 2px 10px;
 }
 
-.view-recipe-button {
-    margin: 0 20px;
+/*Opaque white background for the pages excluding home*/
+.white-container {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    padding: 50px 100px;
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 /* ------ HEADER ------*/
+md-toolbar {
+    z-index:20;
+}
 
 .nav-button {
     margin: 10px 10px;
@@ -75,6 +91,12 @@ md-checkbox {
     font-size: 18px;
 }
 
+/*Footer styling*/
+md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+}
+
 /* ------ LOGIN PAGE ------*/
 .log-in {
     margin: 100px auto 0 auto;
@@ -103,10 +125,6 @@ md-checkbox {
     letter-spacing: 2px;
 }
 
-.log-in .md-button {
-    padding: 0;
-}
-
 .register-failed-message {
     color: #f44336;
     text-align: center;
@@ -117,26 +135,25 @@ md-checkbox {
 .home-container {
     min-height: 700px;
     margin-top: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+    background-color: transparent;
 }
 
 .home-text {
     text-align: center;
 }
 
-/* ------ ENTER RECIPE PAGE ------ */
-.enter-recipe-container {
-    margin-top: 25px;
-    margin-bottom: 80px;
+.home-random {
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.80);
+    padding: 30px 50px;
 }
 
-.enter-recipe-container h1 h2{
-    text-align: center;
-}
+/* ------ ENTER RECIPE PAGE ------ */
 
 .accordion a {
     padding: 10px;
-    background: #ddd;
+    background: #eeeeee;
     color: #333;
     text-decoration: none;
     display: block;
@@ -144,7 +161,7 @@ md-checkbox {
 }
 
 .accordion-content{
-    border: 1px solid #ddd;
+    /*border: 1px solid #ffffff;*/
     padding: 10px;
     margin: 1px 0;
 }
@@ -176,31 +193,39 @@ md-checkbox {
     margin: 50px 0;
 }
 
+.md-button.next-button {
+    line-height:0;
+}
+
+.md-button.next-button[disabled] {
+    max-height: 36px;
+}
+
 .error-message {
+    font-size: 16px;
     color: #f44336;
     font-weight: bold;
 }
 
 /* ------ SEARCH RECIPE PAGE ------ */
-.search-recipe-container {
-    min-height: 800px;
-    margin-top: 25px;
-    margin-bottom: 80px;
+.result-content {
+    min-height: 700px;
 }
 
 .search-button {
     margin: 50px 0;
 }
 
-.result-button {
+.result-items {
     text-align: left;
+    font-size: 22px;
 }
 
-/* ------ RESULTS MODAL ------ */
+/* ------ RECIPE MODAL ------ */
 .ng-modal-overlay {
     /* A dark translucent div that covers the whole screen */
     position:absolute;
-    z-index:9999;
+    z-index:9;
     top:0;
     left:0;
     width:100%;
@@ -210,9 +235,9 @@ md-checkbox {
 }
 .ng-modal-dialog {
     /* A centered div above the overlay with a box shadow. */
-    z-index:10000;
+    z-index:10;
     position: absolute;
-    /*width: 75%; /!* Default *!/*/
+    /*width: 90%; /!* Default *!/*/
 
     /* Center the dialog */
     top: 50%;
@@ -221,7 +246,7 @@ md-checkbox {
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
 
-    background-color: #fff;
+    background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 80px #000;
 }
 .ng-modal-dialog-content {
@@ -232,10 +257,6 @@ md-checkbox {
 .recipe-name {
     text-align: center;
 }
-
-/*recipe p, recipe li{*/
-    /*font-size: 18px;*/
-/*}*/
 
 .ng-modal-close {
     z-index:20000;
@@ -250,8 +271,20 @@ md-checkbox {
     font-family: 'arial', 'sans-serif';
 }
 
+/* ------ MEAL PLAN PAGE ------ */
+
+.add-to-list-button {
+    font-size: 14px;
+}
+
+/* ------ GROCERIES LIST PAGE ------ */
+
 .strike {
     text-decoration: line-through;
+}
+
+.view-recipe-button {
+    margin: 0 10px;
 }
 
 /* ------ MOBILE STYLING ------ */
@@ -260,40 +293,52 @@ md-checkbox {
 @media (max-width:1000px) {
 
     .log-in {
-        margin-top: 80px;
-        width: 80%;
-        background-color: none;
-    }
-    .logo {
-        font-size: 42px;
-        letter-spacing: 14px;
-        text-transform: uppercase;
-    }
-
-    .log-in h2 {
-        margin-top: 30px;
-        font-size: 35px;
-        letter-spacing: 10px;
-    }
-
-    .log-in md-input-container:not(.md-input-invalid) {
-        font-size: 20px;
-        letter-spacing: 5px;
-        margin: 50px 0;
-    }
-
-    .log-in .md-button, .log-in a {
-        font-size: 25px;
-        margin-top: 80px;
-        text-transform: none;
-    }
-
-    .log-in .md-button {
-        padding: 10px 40px;
+        margin-top: 50px;
     }
     
-    .front-pages {
-        background-image: none;
+    .home-container {
+        min-height: 0;
     }
+
+    .home-random {
+        width: 98%;
+        padding: 20px 10px;
+    }
+
+    .home-random h1 {
+        font-size: 24px;
+    }
+
+    .home-random h2, .random-text {
+        font-size: 26px;
+        line-height: 120%;
+    }
+
+    .random-text {
+        margin: 5px;
+    }
+
+    .ng-modal-dialog-content {
+        padding: 20px;
+    }
+
+    recipe p, recipe li {
+        font-size: 16px;
+    }
+
+    .white-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .result-content {
+        min-height: 0;
+    }
+
+    .result-items {
+        font-size: 18px;
+    }
+
 
 }

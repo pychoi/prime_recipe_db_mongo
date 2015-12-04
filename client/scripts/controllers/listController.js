@@ -1,12 +1,8 @@
 myApp.controller('ListController', ['$scope','$http',function($scope,$http){
-    //console.log("ListController is working!");
 
     $scope.noSavedRecipesMessage = false;
     $scope.saveSuccessMessage = false;
     $scope.savedList = [];
-
-    // Hide Add to Meal Plan Button
-    //$scope.checkSaved = true;
 
     //GET all items in the list
     $scope.getList = function(){
@@ -52,24 +48,28 @@ myApp.controller('ListController', ['$scope','$http',function($scope,$http){
         });
     };
 
-    $scope.getList();
+    // Add to Meal Plan Button
+    $scope.addToMealPlan = function(dish){
+        // Save dish to user profile
+        $http.put('/user/mealPlan', dish).then(function(){
+            //console.log(response.data.mealSaved);
+            $scope.checkMealPlan = true;
+            $scope.saveSuccessMessage = true;
+        });
+    };
 
+    // Save list status
     $scope.saveStatus = function(){
-        // put call to save SAVELIST to DB
-        //console.log($scope.savedList);
-
         // Reset List
         $http.delete('/user/groceriesList').then(function(){
 
-            // Add Updated Recipes to Groceries List
+        // Add Updated Recipes to Groceries List
             for (var i = 0; i < $scope.savedList.length; i++) {
                 $http.put('/user/groceriesList', $scope.savedList[i]).then(function () {
                     $scope.getList();
                 });
             }
         })
-
-
     };
 
 

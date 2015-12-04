@@ -14,5 +14,8 @@
 
 <hr>
 <h2>Instructions</h2>
-<p ng-repeat="instruction in info.instructions">Step {{instruction.step}}: {{instruction.instruction}}</p>
 
+<div layout="row" ng-repeat="instruction in info.instructions">
+    <p flex="25" flex-gt-sm="15">Step {{instruction.step}}: </p>
+    <p flex="75" flex-gt-sm="85"> {{instruction.instruction}}</p>
+</div>

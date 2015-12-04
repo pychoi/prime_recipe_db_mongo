@@ -1,5 +1,4 @@
-<md-content class="search-recipe-container" flex="70" flex-offset="15" flex-gt-md="50" flex-offset-gt-md="25">
-
+<md-content class="white-container" flex="70" flex-offset="15" flex-gt-lg="60" flex-offset-gt-lg="20" flex-sm="90" flex-offset-sm="5">
     <h1 class="md-display-1">Search Recipes</h1>
 
     <div ng-init="accordion=1">
@@ -8,7 +7,7 @@
         </h2>
         <div ng-show="accordion==1">
 
-            <form id="searchRecipeForm" name="searchRecipeForm" flex-gt-sm="50">
+            <form id="searchRecipeForm" name="searchRecipeForm" flex-gt-md="80">
                 <md-input-container class="md-accent">
                     <label for="search">Search By Keyword(s)</label>
                     <input type="text" ng-model="search.keyword" id="search" name="search" >
@@ -27,10 +26,12 @@
             <div layout="row" layout-sm="column" layout-wrap>
                 <md-checkbox flex="16" class="md-accent md-hue-3" ng-repeat="category in main" ng-click="toggleChecked(category)">{{category}}</md-checkbox>
             </div>
+            <hr>
             <h3 class="md-display-title">Cuisine</h3>
             <div layout="row" layout-sm="column" layout-wrap>
                 <md-checkbox flex="16" class="md-accent md-hue-3" ng-repeat="category in cuisine" ng-click="toggleChecked(category)">{{category}}</md-checkbox>
             </div>
+            <hr>
             <h3 class="md-display-title">Dish Type(s)</h3>
             <div layout="row" layout-sm="column" layout-wrap>
                 <md-checkbox flex="16" class="md-accent md-hue-3" ng-repeat="category in type" ng-click="toggleChecked(category)">{{category}}</md-checkbox>
